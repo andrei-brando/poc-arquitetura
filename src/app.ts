@@ -1,5 +1,6 @@
 import express, { Request, Response, Router } from 'express';
 import cors from 'cors';
+import 'reflect-metadata';
 
 export default class App {
   readonly #express: express.Application;

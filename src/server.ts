@@ -1,13 +1,19 @@
 import App from './app';
 import dotenv from 'dotenv';
+import { Database } from './infra/database/connections/database';
 
-const app = new App();
+new Database()
+  .openConnection()
+  .then((_) => {
+    const app = new App();
 
-dotenv.config({
-  path: './../.env',
-});
+    dotenv.config({
+      path: './../.env',
+    });
 
-const port = process.env.PORT || '8080';
+    const port = process.env.PORT || '8080';
 
-app.init();
-app.start(parseInt(port));
+    app.init();
+    app.start(parseInt(port));
+  })
+  .catch(console.error);
