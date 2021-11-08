@@ -15,14 +15,16 @@ config = {
   url: process.env.DATABASE_URL,
   logging,
   ssl,
-  // entities: [
-  //   'src/core/infra/data/database/entities/**/*'
-  // ],
-  // migrations: [
-  //   'src/core/infra/data/database/migrations/**/*'
-  // ],
-  // cli: {
-  //   entitiesDir: 'src/core/infra/data/database/entities',
-  //   migrationsDir: 'src/core/infra/data/database/migrations'
-  // },
+  entities: [
+    'src/infra/database/entities/**/*'
+  ],
+  migrations: [
+    'src/infra/database/migrations/**/*'
+  ],
+  cli: {
+    entitiesDir: 'src/infra/database/entities',
+    migrationsDir: 'src/infra/database/migrations'
+  },
 }
+
+module.exports = config;
