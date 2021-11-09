@@ -1,6 +1,7 @@
 import express, { Request, Response, Router } from 'express';
 import cors from 'cors';
 import 'reflect-metadata';
+import { CardRoutes } from './routes';
 
 export default class App {
   readonly #express: express.Application;
@@ -32,6 +33,8 @@ export default class App {
     router.get('/', (_: Request, response: Response) =>
       response.send('API rodando...')
     );
+
+    new CardRoutes().init(router);
   }
 
   public start(port: number) {

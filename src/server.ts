@@ -1,14 +1,13 @@
-import App from './app';
+import App from './main/app';
 import dotenv from 'dotenv';
-import { Database } from './infra/database/connections/database';
+import { databaseHelper } from './infra/database/connections';
 
 dotenv.config({
   path: './../.env',
 });
 
-new Database()
-  .openConnection()
-  .then((_) => {
+Promise.all([databaseHelper.connect()])
+  .then(() => {
     const app = new App();
 
     const port = process.env.PORT || '8080';

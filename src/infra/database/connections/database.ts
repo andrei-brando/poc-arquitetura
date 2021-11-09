@@ -1,27 +1,27 @@
-import { Connection, createConnection } from 'typeorm';
+// import { Connection, createConnection, EntityTarget, Repository } from 'typeorm';
 
-export class Database {
-  private static connection: Connection;
+// export class Database {
+//   connection: null as unknown as Connection;
 
-  public static getConnection(): Connection {
-    if (!Database.connection) {
-      throw new Error('CONEXAO_DATABASE_NAO_ABERTA');
-    }
+//   public async connect(): Promise<void> {
+//     if (!Database.connection) {
+//       Database.connection = await createConnection();
+//     }
+//   }
 
-    return Database.connection;
-  }
+//   public async disconnect() {
+//     if (!Database.connection) {
+//       throw new Error('CONEXAO_DATABASE_NAO_ABERTA');
+//     }
 
-  public async openConnection(): Promise<void> {
-    if (!Database.connection) {
-      Database.connection = await createConnection();
-    }
-  }
+//     await Database.connection.close();
+//   }
 
-  public async disconnectDatabase() {
-    if (!Database.connection) {
-      throw new Error('CONEXAO_DATABASE_NAO_ABERTA');
-    }
+//   async getRepository<T>(entity: EntityTarget<T>): Promise<Repository<T>> {
+//     if (!this.connection || !this.connection.isConnected) {
+//       await this.connect();
+//     }
 
-    await Database.connection.close();
-  }
-}
+//     return this.client.getRepository<T>(entity);
+//   },
+// }
